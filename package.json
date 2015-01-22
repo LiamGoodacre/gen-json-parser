@@ -1,0 +1,16 @@
+{
+  "name": "gen-json-parser",
+  "version": "0.1.0",
+  "main": "parser.js",
+  "dependencies": {
+    "parsimmon": "0.5.1"
+  },
+  "devDependencies": {
+    "test": "*",
+    "jison": "*",
+    "uglify-js": "*"
+  },
+  "scripts": {
+    "test": "node test/all-tests.js"
+  }
+}
