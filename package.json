@@ -1,6 +1,7 @@
 {
   "name": "gen-json-parser",
   "version": "0.1.0",
+  "description": "Generate JSON parsers for custom data structures.",
   "main": "parser.js",
   "dependencies": {
     "parsimmon": "0.5.1"
@@ -12,5 +13,20 @@
   },
   "scripts": {
     "test": "node test/all-tests.js"
-  }
+  },
+  "keywords": [
+    "JavaScript",
+    "JSON",
+    "Parser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LiamGoodacre/gen-json-parser"
+  },
+  "author": "Liam Goodacre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiamGoodacre/gen-json-parser/issues"
+  },
+  "homepage": "https://github.com/LiamGoodacre/gen-json-parser"
 }
