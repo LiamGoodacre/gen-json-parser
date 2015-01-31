@@ -4,7 +4,7 @@ Generate JSON parsers for custom data structures.
 
 ## Motivation
 
-This project came about after realizing that JavaScript objects *are not* Maps.  With a Map data-structure one should expect that for all keys `k`, adding a new entry at `k` cannot affect the existence of other entries.  JavaScript objects do not have this property do to special keys such as `"__proto__"`.
+This project came about after realizing that JavaScript objects **are not** Maps.  With a Map data-structure one should expect that for all keys `k`, adding a new entry at `k` cannot affect the existence of other entries.  JavaScript objects do not have this property do to special keys such as `"__proto__"`.
 
 If you wish to treat JSON as a representation of data (for example, that a user may input) then you will want to avoid `JSON.parse`.  What you want is to parse the JSON into data-structures that are appropriate to your solution.
 
