@@ -85,11 +85,10 @@ To write a custom JSON parser, you must provide details of how to interpret each
 For example, to replicate the behaviour of `JSON.parse`, we could generate the following parser:
 
 ~~~javascript
-var json = require('gen-json-parser');
+var generate = require('gen-json-parser').generate;
 var id = function (v) { return v; };
 
-// replica of JSON.parse
-var js = json.generate({
+var parseJSON = generate({
   null: id,
   boolean: id,
   string: id,
@@ -103,4 +102,6 @@ var js = json.generate({
   }
 });
 ~~~
+
+Note that `JSON.parse` throws if there is a parse error, whereas this one will return an object with a `status` property associated with `false`.
 
