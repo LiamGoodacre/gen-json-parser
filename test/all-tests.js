@@ -1,48 +1,49 @@
-var fs = require("fs"),
-    assert = require("assert"),
-    parser = require("../parser");
+var fs = require("fs");
+var assert = require("assert");
+var parser = require("../index");
+var parse = parser.parse.JValues;
 
 //  construct a result value
 var VAL = function (tag) {
   return function (term) {
-    return { tag: tag, term: term }
-  }
-}
+    return { tag: tag, term: term };
+  };
+};
 
 //  result value constructors
-var NUL = VAL('null')(null)
-var BLN = VAL('boolean')
-var NUM = VAL('number')
-var STR = VAL('string')
-var OBJ = VAL('object')
-var ARR = VAL('array')
+var NUL = VAL('null')(null);
+var BLN = VAL('boolean');
+var NUM = VAL('number');
+var STR = VAL('string');
+var OBJ = VAL('object');
+var ARR = VAL('array');
 
 
 //  test that json is correctly parsed into `out`
 var CHECK = function (json, out) {
   return function () {
-   var res = parser.parse(json);
-   assert.deepEqual(res.value, out);
-   assert(res.status, "should succeed parsing" + JSON.stringify(res));
+    var res = parse(json);
+    assert.deepEqual(res.value, out);
+    assert(res.status, "should succeed parsing" + JSON.stringify(res));
   };
 };
 
 var FAIL = function (json) {
   return function () {
-    assert(!parser.parse(json).status, "should fail parsing");
+    assert(!parse(json).status, "should fail parsing");
   };
 };
 
 var PASS = function (json) {
   return function () {
-    var result = parser.parse(json)
+    var result = parse(json)
     assert(result.status, "should pass" + JSON.stringify(result));
   };
 };
 
 var FILE = function (path) {
   return fs.readFileSync(__dirname + path).toString();
-}
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +57,7 @@ exports["test escaped \\n"] = CHECK('{"foo": "\\\\\\n"}', OBJ([ ["foo", STR('\\\
 
 exports["test string with escaped line break"] = function () {
   var json = '{"foo": "bar\\nbar"}';
-  var out = parser.parse(json);
+  var out = parse(json);
   assert.deepEqual(out.value,
       OBJ([ ["foo", STR("bar\nbar")] ]));
   var converted = out.value.term.reduce(function (a, p) {

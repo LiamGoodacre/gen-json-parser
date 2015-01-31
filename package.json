@@ -2,7 +2,7 @@
   "name": "gen-json-parser",
   "version": "0.1.0",
   "description": "Generate JSON parsers for custom data structures.",
-  "main": "parser.js",
+  "main": "index.js",
   "dependencies": {
     "parsimmon": "0.5.1"
   },
